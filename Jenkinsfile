@@ -3,8 +3,8 @@ pipeline {
   stages {
     stage('Ler') {
       steps {
-        sh '''ls
-cat/estagiocloud/estagio/querovaga.txt'''
+        sh '''cat/estagiocloud/estagio/querovaga.txt
+ls'''
       }
     }
   }

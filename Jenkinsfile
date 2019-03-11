@@ -3,8 +3,7 @@ pipeline {
   stages {
     stage('Ler') {
       steps {
-        sh '''ls
-mv querovaga.txt /var/www/html/index.html'''
+        sh 'mv querovaga.txt /var/www/html/index.html'
       }
     }
   }

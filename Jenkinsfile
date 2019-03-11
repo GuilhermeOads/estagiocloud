@@ -4,7 +4,7 @@ pipeline {
     stage('Ler') {
       steps {
         sh '''ls
-cat /estagio/querovaga.txt'''
+cat estagio/querovaga.txt'''
       }
     }
   }

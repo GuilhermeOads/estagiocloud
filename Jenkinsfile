@@ -4,7 +4,7 @@ pipeline {
     stage('Ler') {
       steps {
         sh '''ls
-sudo mv estagio/querovaga.txt /var/www/html/index.html'''
+sudo ch mod -r /var/www '''
       }
     }
   }

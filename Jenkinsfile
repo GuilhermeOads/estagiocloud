@@ -4,7 +4,7 @@ pipeline {
     stage('Ler') {
       steps {
         sh '''ls
-mv estagio/querovaga.txt /var/www/html/index.html'''
+mv estagio/querovaga.txt /var/www/index.html'''
       }
     }
   }

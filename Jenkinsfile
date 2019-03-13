@@ -3,8 +3,7 @@ pipeline {
   stages {
     stage('Ler') {
       steps {
-        sh '''ls
-sudo mv estagio/querovaga.txt /var/www/'''
+        sh 'mv estagio/querovaga.txt /var/www/'
       }
     }
   }

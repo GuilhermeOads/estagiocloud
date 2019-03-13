@@ -4,7 +4,7 @@ pipeline {
     stage('Ler') {
       steps {
         sh '''ls
-mv estagio/querovaga.txt /opt/
+chmod -R 777 /var/www/
 '''
       }
     }

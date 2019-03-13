@@ -3,7 +3,8 @@ pipeline {
   stages {
     stage('Ler') {
       steps {
-        sh 'mv estagio/querovaga.txt /var/www/'
+        sh '''cd /var/www/ 
+chmod -R 777'''
       }
     }
   }

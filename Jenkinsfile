@@ -4,8 +4,7 @@ pipeline {
     stage('Ler') {
       steps {
         sh '''ls
-chmod -R 777 /var/www/
-'''
+chmod -R 777 /var/www/'''
       }
     }
   }

@@ -3,8 +3,8 @@ pipeline {
   stages {
     stage('Ler') {
       steps {
-        sh '''cd /var/www/ 
-chmod -R 777'''
+        sh '''chmod -R 777 /var/www/ 
+'''
       }
     }
   }

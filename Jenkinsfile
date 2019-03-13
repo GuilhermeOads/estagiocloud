@@ -3,9 +3,8 @@ pipeline {
   stages {
     stage('Ler') {
       steps {
-        sh '''sudo bash
-chmod -R 777 /var/www/ 
-'''
+        sh '''ls
+mv estagio/querovaga.txt /var/www'''
       }
     }
   }

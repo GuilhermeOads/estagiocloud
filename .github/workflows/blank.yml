@@ -1,22 +1,28 @@
-# inside .github/workflows/your-action.yml
-name: Add File to Bucket
-on: push
-
+name: Staging Build
+on:
+  push:
+    branches:
+      - staging
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     
+    strategy:
+      matrix:
+        node-version: [8.x, 10.x, 12.x]
+        
     steps:
-   - uses: actions/checkout@master
-     
-   - name: Upload file to bucket
-   uses: zdurham/s3-upload-github-action@master
-   with:
-     args: --acl public-read
-   env:
-    FILE: ./Jenkinsfile
-    AWS_REGION: 'us-east-1'
-    AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-    S3_KEY: ${{ secrets.S3_KEY }}
-    AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-    AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Deploy to S3
+      uses: jakejarvis/s3-sync-action@master
+      with:
+        args: --acl public-read --delete
+      env:
+        AWS_S3_BUCKET: ${{ secrets.AWS_STAGING_BUCKET_NAME }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_REGION: ${{ secrets.AWS_REGION }}
